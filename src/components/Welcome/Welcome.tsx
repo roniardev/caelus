@@ -1,4 +1,5 @@
 import { Title, Text, Anchor } from '@mantine/core';
+import { css } from '@styled-system/css';
 import classes from './Welcome.module.css';
 
 export function Welcome() {
@@ -17,6 +18,13 @@ export function Welcome() {
           this guide
         </Anchor>
         . To get started edit page.tsx file.
+      </Text>
+      <Text
+        className={css({
+          color: 'red',
+        })}
+      >
+        Test How
       </Text>
     </>
   );
