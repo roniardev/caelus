@@ -1,1 +1,7 @@
-module.exports = require('eslint-config-mantine/.prettierrc.js');
+module.exports = {
+  arrowParens: 'always',
+  singleQuote: true,
+  jsxSingleQuote: false,
+  tabWidth: 2,
+  semi: true,
+};

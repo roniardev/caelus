@@ -1,11 +1,20 @@
 'use client';
 
-import { ActionIcon, Burger, Container, Group, Text, Flex } from '@mantine/core';
-import Link from 'next/link';
+import {
+  ActionIcon,
+  Burger,
+  Container,
+  Flex,
+  Group,
+  Text,
+} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconMoonStars, IconSun } from '@tabler/icons-react';
+import Link from 'next/link';
 import { useState } from 'react';
+
 import useTheme from '@/stores/useTheme';
+
 import { css } from '../../../../styled-system/css';
 
 type HeaderSimpleProps = {

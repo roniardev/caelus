@@ -2,7 +2,7 @@ import { createMachine } from 'xstate';
 import { create } from 'zustand';
 import xstate from 'zustand-middleware-xstate';
 
-type Context = {};
+type Context = Record<string, string>;
 type States = {
   value: 'light' | 'dark';
   context: Context;
