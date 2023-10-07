@@ -20,7 +20,13 @@ module.exports = {
     'plugin:@next/next/recommended',
     'plugin:jest/recommended',
   ],
-  ignorePatterns: ['!.config.js', 'cz-config.js', '!.prettierrc.js', '!.eslintrc.js', '!.prettierrc.js'],
+  ignorePatterns: [
+    '!.config.js',
+    'cz-config.js',
+    '!.prettierrc.js',
+    '!.eslintrc.js',
+    '!.prettierrc.js',
+  ],
   rules: {
     'no-unused-vars': 'off',
     'no-console': 'warn',

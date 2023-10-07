@@ -4,10 +4,12 @@ import React from 'react';
 import './globals.css';
 import '@mantine/core/styles.css';
 
+import ReactQueryProviders from '@/components/utils/Providers';
+
 import { theme } from '@/theme';
 
 export const metadata = {
-  title: 'Mantine Next.js template',
+  title: 'Caelus - Opinionated Next.js Starter',
   description: 'I am using Mantine with Next.js!',
 };
 
@@ -23,7 +25,9 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <ReactQueryProviders>
+          <MantineProvider theme={theme}>{children}</MantineProvider>
+        </ReactQueryProviders>
       </body>
     </html>
   );
