@@ -1,7 +1,4 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
+import "./src/env.mjs";
 module.exports = withBundleAnalyzer({
   reactStrictMode: false,
   eslint: {

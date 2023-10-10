@@ -16,9 +16,8 @@
 
   html {
     line-height: 1.5;
-    --font-fallback: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-      'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    --font-fallback: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
       'Noto Color Emoji';
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -160,17 +159,17 @@
   samp,
   pre {
     font-size: 1em;
-    --font-mono-fallback: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      'Liberation Mono', 'Courier New';
+    --font-mono-fallback: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New';
     font-family: var(--global-font-mono, var(--font-fallback));
   }
 
-  input[type='text'],
-  input[type='email'],
-  input[type='search'],
-  input[type='password'] {
+
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="password"] {
     -webkit-appearance: none;
-    -moz-appearance: none;
+    -moz-appearance: none; 
   }
 
   input[type='search'] {
@@ -188,12 +187,12 @@
     font: inherit;
   }
 
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
     height: auto;
   }
 
-  input[type='number'] {
+  input[type='number']{
     -moz-appearance: textfield;
   }
 
