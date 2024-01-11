@@ -17,7 +17,6 @@ module.exports = {
     'next',
     'prettier',
     'mantine',
-    'plugin:@next/next/recommended',
     'plugin:jest/recommended',
   ],
   ignorePatterns: [

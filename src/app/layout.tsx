@@ -1,4 +1,5 @@
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { GeistSans } from 'geist/font/sans';
 import React from 'react';
 
 import './globals.css';
@@ -24,7 +25,7 @@ export default function RootLayout({ children }: { children: any }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body>
+      <body className={GeistSans.className}>
         <ReactQueryProviders>
           <MantineProvider theme={theme}>{children}</MantineProvider>
         </ReactQueryProviders>

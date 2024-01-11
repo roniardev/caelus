@@ -1,12 +1,15 @@
 import { Text, Title } from '@mantine/core';
+import { useTranslations } from 'next-intl';
 
 import classes from './Welcome.module.css';
 
 export function Welcome() {
+  const t = useTranslations('Home');
+
   return (
     <>
       <Title className={classes.title} ta="center" mt={100}>
-        Welcome to{' '}
+        {t('title')}
         <Text
           inherit
           variant="gradient"
@@ -17,7 +20,7 @@ export function Welcome() {
         </Text>
       </Title>
       <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
-        This is my opiniated Next.js starter. It is using Mantine.
+        {t('subtitle')}
       </Text>
     </>
   );

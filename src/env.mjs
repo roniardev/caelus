@@ -3,8 +3,8 @@ import { z } from 'zod';
 
 export const env = createEnv({
   server: {
-    DATABASE_URL: z.string().url(),
-    OPEN_AI_API_KEY: z.string().min(1),
+    NEXTAUTH_URL: z.string().url(),
+    NEXTAUTH_SECRET: z.string().min(10),
   },
 
   /**
@@ -18,7 +18,7 @@ export const env = createEnv({
   },
 
   /**
-   * What object holds the environment variables at runtime. This is usually
+   * What object holds there environment variables at runtime. This is usually
    * `process.env` or `import.meta.env`.
    */
   runtimeEnv: process.env,
