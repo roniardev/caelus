@@ -39,6 +39,7 @@
     "@tanstack/react-query": "^4.35.7",
     "@tanstack/react-query-next-experimental": "^5.0.0-alpha.80",
     "@vanilla-extract/css": "^1.13.0",
+    "@vercel/og": "^0.6.2",
     "geist": "^1.1.0",
     "next": "^14.0.4",
     "next-auth": "^4.24.4",
