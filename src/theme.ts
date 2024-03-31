@@ -1,5 +1,3 @@
-'use client';
-
 import { createTheme } from '@mantine/core';
 import { themeToVars } from '@mantine/vanilla-extract';
 

@@ -3177,9 +3177,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/core@npm:^7.1.2":
-  version: 7.7.0
-  resolution: "@mantine/core@npm:7.7.0"
+"@mantine/core@npm:^7.7.1":
+  version: 7.7.1
+  resolution: "@mantine/core@npm:7.7.1"
   dependencies:
     "@floating-ui/react": "npm:^0.26.9"
     clsx: "npm:2.1.0"
@@ -3188,28 +3188,28 @@ __metadata:
     react-textarea-autosize: "npm:8.5.3"
     type-fest: "npm:^4.12.0"
   peerDependencies:
-    "@mantine/hooks": 7.7.0
+    "@mantine/hooks": 7.7.1
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10c0/d2934192c92a5193431f56af473f50e06bed584aa4f1033038bf409444c608665814c072d064ad8c3fde4a5a3a3472f8a5363b3a095e6e8195e619c1d15032fc
+  checksum: 10c0/21a9cdb2ccf61a3ef1b1a39ded1af914b455d020a76152647fc5400dbde5a1c0e2a43693abc36d61839e219695a4db71deecf2c0e9b6689cbc3ae90c8680343f
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:^7.1.2":
-  version: 7.7.0
-  resolution: "@mantine/hooks@npm:7.7.0"
+"@mantine/hooks@npm:^7.7.1":
+  version: 7.7.1
+  resolution: "@mantine/hooks@npm:7.7.1"
   peerDependencies:
     react: ^18.2.0
-  checksum: 10c0/eadf0dc8e702a0c2e255bb8116ac9cc4da05b69f9895e29af1940a1e04eb752367062262cf17171fd2f18c3f7761618a2eb7e930e88a238db008c2f6892c0390
+  checksum: 10c0/ecfac1b90db47aca1c87522f8b1a52dc3526197c61cfa685b51a832b6566ca851b7b392273d48423a60abf7f4131dbfaf9ecde21428872bef711e17c9e05f3b6
   languageName: node
   linkType: hard
 
-"@mantine/vanilla-extract@npm:^7.1.2":
-  version: 7.7.0
-  resolution: "@mantine/vanilla-extract@npm:7.7.0"
+"@mantine/vanilla-extract@npm:^7.7.1":
+  version: 7.7.1
+  resolution: "@mantine/vanilla-extract@npm:7.7.1"
   peerDependencies:
-    "@mantine/core": 7.7.0
-  checksum: 10c0/932ec3ff5a014c23f5ff0619d95fef978bc1f1923f288cac209d8cb14910ed611b2cd8dd6121ef0b882aa9fa88c516431f0d18483fe037a5a191a56ccdb562c1
+    "@mantine/core": 7.7.1
+  checksum: 10c0/458f076e89dc4dca75eb06470988e6e8584461fc58a5e54e33b1093805669da3e0456432dcbef8899d4ce14814b2985b263c53703d86fc193ea488e1aab799cd
   languageName: node
   linkType: hard
 
@@ -8931,9 +8931,9 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.22.1"
     "@commitlint/config-conventional": "npm:^17.7.0"
-    "@mantine/core": "npm:^7.1.2"
-    "@mantine/hooks": "npm:^7.1.2"
-    "@mantine/vanilla-extract": "npm:^7.1.2"
+    "@mantine/core": "npm:^7.7.1"
+    "@mantine/hooks": "npm:^7.7.1"
+    "@mantine/vanilla-extract": "npm:^7.7.1"
     "@next/bundle-analyzer": "npm:^13.5.3"
     "@next/eslint-plugin-next": "npm:^13.5.3"
     "@next/mdx": "npm:^14.0.0"
