@@ -29,8 +29,8 @@
     "lint:strict": "eslint --max-warnings=0 src"
   },
   "dependencies": {
-    "@mantine/core": "7.1.1",
-    "@mantine/hooks": "7.1.1",
+    "@mantine/core": "^7.1.2",
+    "@mantine/hooks": "^7.1.2",
     "@mantine/vanilla-extract": "^7.1.2",
     "@next/bundle-analyzer": "^13.5.3",
     "@next/mdx": "^14.0.0",
@@ -125,5 +125,6 @@
     "cz-customizable": {
       "config": "./cz.config.js"
     }
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }
