@@ -1,0 +1,43 @@
+.header {
+  height: rem(56px);
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  margin-bottom: rem(120px);
+  background-color: var(--mantine-color-body);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(10px) brightness(1.2); /* Apply blur effect with increased brightness */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-bottom: rem(1px) solid
+    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+}
+
+.inner {
+  height: rem(56px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  padding: rem(8px) rem(12px);
+  border-radius: var(--mantine-radius-sm);
+  text-decoration: none;
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+
+  @mixin hover {
+    background-color: light-dark(
+      var(--mantine-color-gray-0),
+      var(--mantine-color-dark-6)
+    );
+  }
+
+  [data-mantine-color-scheme] &[data-active] {
+    background-color: var(--mantine-color-blue-filled);
+    color: var(--mantine-color-white);
+  }
+}

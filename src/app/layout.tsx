@@ -1,9 +1,11 @@
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { NavigationProgress } from '@mantine/nprogress';
 import { GeistSans } from 'geist/font/sans';
 import React from 'react';
 
 import './globals.css';
 import '@mantine/core/styles.css';
+import '@mantine/nprogress/styles.css';
 
 import ReactQueryProviders from '@/components/utils/Providers';
 
@@ -27,7 +29,10 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body className={GeistSans.className}>
         <ReactQueryProviders>
-          <MantineProvider theme={theme}>{children}</MantineProvider>
+          <MantineProvider theme={theme}>
+            <NavigationProgress />
+            {children}
+          </MantineProvider>
         </ReactQueryProviders>
       </body>
     </html>

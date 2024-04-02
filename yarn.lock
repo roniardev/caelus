@@ -3204,6 +3204,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/nprogress@npm:^7.7.1":
+  version: 7.7.1
+  resolution: "@mantine/nprogress@npm:7.7.1"
+  dependencies:
+    "@mantine/store": "npm:7.7.1"
+  peerDependencies:
+    "@mantine/core": 7.7.1
+    "@mantine/hooks": 7.7.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10c0/7cf6d2b7e07f91b23595ce4339810ae2b0863dc111f6d1ec2085176f7683aa0cecb22b1b43627766f3ee6029d9d5409989e7552a26f388590d1b2f2bed22653d
+  languageName: node
+  linkType: hard
+
+"@mantine/store@npm:7.7.1":
+  version: 7.7.1
+  resolution: "@mantine/store@npm:7.7.1"
+  peerDependencies:
+    react: ^18.2.0
+  checksum: 10c0/e88020fa12030f2d8565bc47ed491b942b418a5c6ef1f7fb4ad1836c63ba140f01fc757a9bdbe43c99f72c5c5ff92165a90b34f69635bd5db91b60a4a5512eb2
+  languageName: node
+  linkType: hard
+
 "@mantine/vanilla-extract@npm:^7.7.1":
   version: 7.7.1
   resolution: "@mantine/vanilla-extract@npm:7.7.1"
@@ -8933,6 +8956,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:^17.7.0"
     "@mantine/core": "npm:^7.7.1"
     "@mantine/hooks": "npm:^7.7.1"
+    "@mantine/nprogress": "npm:^7.7.1"
     "@mantine/vanilla-extract": "npm:^7.7.1"
     "@next/bundle-analyzer": "npm:^13.5.3"
     "@next/eslint-plugin-next": "npm:^13.5.3"
