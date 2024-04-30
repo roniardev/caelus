@@ -46,7 +46,7 @@ export default withAuth(
         !doesPathMatchPages(req, authPages) &&
         !doesPathMatchPages(req, publicPages)
       ) {
-        return null;
+        return intlMiddleware(req);
       }
       return intlMiddleware(req);
     }
