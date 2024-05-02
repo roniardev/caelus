@@ -4,6 +4,7 @@ import {
   ActionIcon,
   Burger,
   Container,
+  Flex,
   Group,
   Text,
   useMantineColorScheme,
@@ -67,6 +68,33 @@ export function Header() {
 
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
       </Container>
+      {opened && (
+        <Flex
+          direction="column"
+          align="center"
+          justify="center"
+          style={{
+            width: '100%',
+          }}
+          className={classes.mobileExpandContainer}
+        >
+          <ActionIcon
+            variant="outline"
+            color={colorScheme === 'dark' ? 'yellow' : 'blue'}
+            onClick={toggleColorScheme}
+            title="Toggle color scheme"
+            my="md"
+          >
+            {colorScheme === 'dark' ? (
+              <IconSunFilled size={18} />
+            ) : (
+              <IconMoonFilled size={18} />
+            )}
+          </ActionIcon>
+
+          {items}
+        </Flex>
+      )}
     </header>
   );
 }
