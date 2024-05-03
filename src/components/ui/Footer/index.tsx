@@ -66,7 +66,7 @@ export function Footer() {
       <Container className={classes.inner}>
         <div className={classes.logo}>
           <Text size="lg" fw={900}>
-            Caleus
+            Caelus
           </Text>
           <Text size="xs" c="dimmed" className={classes.description}>
             Build fully functional accessible web applications faster than ever

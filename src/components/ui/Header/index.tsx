@@ -46,7 +46,7 @@ export function Header() {
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
         <Text fw={900} size="lg">
-          Caleus
+          Caelus
         </Text>
         <Group gap={5} visibleFrom="xs">
           {items}
