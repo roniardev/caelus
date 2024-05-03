@@ -68,6 +68,7 @@ export function Header() {
 
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
       </Container>
+
       {opened && (
         <Flex
           direction="column"

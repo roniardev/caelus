@@ -76,7 +76,7 @@ export function Footer() {
       </Container>
       <Container className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2020 mantine.dev. All rights reserved.
+          © {new Date().getFullYear()} roniar.dev. All rights reserved.
         </Text>
 
         <Group
