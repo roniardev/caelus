@@ -10,9 +10,9 @@ const HomePageFeatures: React.FC = () => {
     <Container py="md">
       <Welcome />
       <Flex direction="column" gap="md" mt="md">
-        <Text>{t('firstParagraph')}</Text>
-        <Text>{t('secondParagraph')}</Text>
-        <Text>{t('thirdParagraph')}</Text>
+        <Text size="sm">{t('firstParagraph')}</Text>
+        <Text size="sm">{t('secondParagraph')}</Text>
+        <Text size="sm">{t('thirdParagraph')}</Text>
       </Flex>
     </Container>
   );
