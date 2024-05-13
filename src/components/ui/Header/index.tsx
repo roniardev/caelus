@@ -1,19 +1,12 @@
 'use client';
 
-import {
-  ActionIcon,
-  Burger,
-  Container,
-  Flex,
-  Group,
-  Text,
-  useMantineColorScheme,
-} from '@mantine/core';
+import { Burger, Container, Flex, Group, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconMoonFilled, IconSunFilled } from '@tabler/icons-react';
 import { useState } from 'react';
 
 import classes from './styles.module.css';
+
+import { ColorSchemeToggle } from '@/components/utils/ColorSchemeToggle';
 
 const links = [
   { link: '/about', label: 'Features' },
@@ -25,7 +18,6 @@ const links = [
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
-  const { toggleColorScheme, colorScheme } = useMantineColorScheme();
 
   const items = links.map((link) => (
     <a
@@ -52,18 +44,7 @@ export function Header() {
           {items}
         </Group>
         <Group gap={5} visibleFrom="xs">
-          <ActionIcon
-            variant="outline"
-            color={colorScheme === 'dark' ? 'yellow' : 'blue'}
-            onClick={toggleColorScheme}
-            title="Toggle color scheme"
-          >
-            {colorScheme === 'dark' ? (
-              <IconSunFilled size={18} />
-            ) : (
-              <IconMoonFilled size={18} />
-            )}
-          </ActionIcon>
+          <ColorSchemeToggle />
         </Group>
 
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
@@ -79,20 +60,7 @@ export function Header() {
           }}
           className={classes.mobileExpandContainer}
         >
-          <ActionIcon
-            variant="outline"
-            color={colorScheme === 'dark' ? 'yellow' : 'blue'}
-            onClick={toggleColorScheme}
-            title="Toggle color scheme"
-            my="md"
-          >
-            {colorScheme === 'dark' ? (
-              <IconSunFilled size={18} />
-            ) : (
-              <IconMoonFilled size={18} />
-            )}
-          </ActionIcon>
-
+          <ColorSchemeToggle />
           {items}
         </Flex>
       )}
