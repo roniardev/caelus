@@ -7,6 +7,7 @@ import { useState } from 'react';
 import classes from './styles.module.css';
 
 import { ColorSchemeToggle } from '@/components/utils/ColorSchemeToggle';
+import LocaleSwitcher from '@/components/utils/LanguageSwitcher';
 
 const links = [
   { link: '/about', label: 'Features' },
@@ -45,6 +46,7 @@ export function Header() {
         </Group>
         <Group gap={5} visibleFrom="xs">
           <ColorSchemeToggle />
+          <LocaleSwitcher />
         </Group>
 
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
@@ -61,6 +63,9 @@ export function Header() {
           className={classes.mobileExpandContainer}
         >
           <ColorSchemeToggle />
+          <Flex mb="sm">
+            <LocaleSwitcher />
+          </Flex>
           {items}
         </Flex>
       )}

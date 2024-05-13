@@ -5,5 +5,9 @@
     "firstParagraph": "Programming is a complex yet fascinating process that involves writing code to create software programs capable of performing specific tasks. This process is crucial in technology development, as nearly all modern technological devices, such as computers, smartphones, and even smart home appliances, require software to operate. Programmers use programming languages like Python, Java, and JavaScript to write code that is then executed by hardware.",
     "secondParagraph": "In the world of programming, a deep understanding of logic and algorithms is essential. Algorithms act as the foundation in software development, guiding programmers in creating efficient and effective solutions to various problems. Over time, many new tools and technologies have been developed to assist programmers in writing better and faster code. Frameworks and libraries like React for JavaScript or Django for Python have made it easier to develop complex web applications.",
     "thirdParagraph": "Furthermore, collaboration and continuous learning are also vital aspects of programming. Many programmers work in teams to build large-scale applications, often using methods like agile development to accelerate the development process and increase adaptability to changes. Online communities and conferences also help programmers stay informed about the latest and best trends in technology. In this way, they can continuously hone their skills and remain relevant in a rapidly changing industry."
+  },
+  "Locales": {
+    "id": "🇮🇩 Bahasa Indonesia",
+    "en": "🇺🇸 English"
   }
 }

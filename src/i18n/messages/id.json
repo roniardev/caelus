@@ -5,5 +5,9 @@
     "firstParagraph": "Pemrograman adalah proses yang kompleks namun menarik yang melibatkan penulisan kode untuk menciptakan program software yang bisa menjalankan tugas-tugas tertentu. Proses ini sangat penting dalam pengembangan teknologi, karena hampir semua perangkat teknologi modern, seperti komputer, smartphone, dan bahkan perangkat rumah pintar, memerlukan software untuk beroperasi. Para programmer menggunakan bahasa pemrograman seperti Python, Java, dan JavaScript untuk menulis kode yang kemudian dijalankan oleh perangkat keras.",
     "secondParagraph": "Dalam dunia pemrograman, pemahaman mendalam tentang logika dan algoritma sangat diperlukan. Algoritma bertindak sebagai fondasi dalam pengembangan software, memandu programmer dalam menciptakan solusi yang efisien dan efektif untuk berbagai masalah. Seiring berjalannya waktu, banyak alat dan teknologi baru telah dikembangkan untuk membantu programmer dalam menulis kode yang lebih baik dan lebih cepat. Framework dan library seperti React untuk JavaScript atau Django untuk Python telah memudahkan pembuatan aplikasi web yang kompleks.",
     "thirdParagraph": "Dalam dunia pemrograman, pemahaman mendalam tentang logika dan algoritma sangat diperlukan. Algoritma bertindak sebagai fondasi dalam pengembangan software, memandu programmer dalam menciptakan solusi yang efisien dan efektif untuk berbagai masalah. Seiring berjalannya waktu, banyak alat dan teknologi baru telah dikembangkan untuk membantu programmer dalam menulis kode yang lebih baik dan lebih cepat. Framework dan library seperti React untuk JavaScript atau Django untuk Python telah memudahkan pembuatan aplikasi web yang kompleks."
+  },
+  "Locales": {
+    "id": "🇮🇩 Bahasa Indonesia",
+    "en": "🇺🇸 English"
   }
 }

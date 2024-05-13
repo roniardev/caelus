@@ -1,6 +1,8 @@
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { NavigationProgress } from '@mantine/nprogress';
 import { GeistSans } from 'geist/font/sans';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import React from 'react';
 
 import './globals.css';
@@ -21,7 +23,11 @@ type Props = {
   params: { locale: string };
 };
 
-export default function LocaleLayout({ children, params: { locale } }: Props) {
+export default async function LocaleLayout({
+  children,
+  params: { locale },
+}: Props) {
+  const messages = await getMessages(locale);
   return (
     <html lang={locale}>
       <head>
@@ -33,12 +39,14 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
         />
       </head>
       <body className={GeistSans.className}>
-        <ReactQueryProviders>
-          <MantineProvider theme={theme}>
-            <NavigationProgress />
-            {children}
-          </MantineProvider>
-        </ReactQueryProviders>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ReactQueryProviders>
+            <MantineProvider theme={theme}>
+              <NavigationProgress />
+              {children}
+            </MantineProvider>
+          </ReactQueryProviders>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
