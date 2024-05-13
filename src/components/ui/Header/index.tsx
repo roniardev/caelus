@@ -21,9 +21,9 @@ export function Header() {
   const [active, setActive] = useState(links[0].link);
 
   const items = links.map((link) => (
-    <a
+    <button
+      type="button"
       key={link.label}
-      href={link.link}
       className={classes.link}
       data-active={active === link.link || undefined}
       onClick={(event) => {
@@ -32,11 +32,16 @@ export function Header() {
       }}
     >
       {link.label}
-    </a>
+    </button>
   ));
 
   return (
-    <header className={classes.header}>
+    <header
+      className={classes.header}
+      style={{
+        height: opened ? '3.75rem' : 'fit-content',
+      }}
+    >
       <Container size="md" className={classes.inner}>
         <Text fw={900} size="lg">
           Caelus
@@ -52,23 +57,20 @@ export function Header() {
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
       </Container>
 
-      {opened && (
-        <Flex
-          direction="column"
-          align="center"
-          justify="center"
-          style={{
-            width: '100%',
-          }}
-          className={classes.mobileExpandContainer}
-        >
-          <ColorSchemeToggle />
-          <Flex mb="sm">
-            <LocaleSwitcher />
-          </Flex>
-          {items}
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        style={{
+          visibility: opened ? 'hidden' : 'visible',
+        }}
+      >
+        <ColorSchemeToggle />
+        <Flex mb="sm">
+          <LocaleSwitcher />
         </Flex>
-      )}
+        {items}
+      </Flex>
     </header>
   );
 }
