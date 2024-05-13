@@ -39,7 +39,7 @@ export function Header() {
     <header
       className={classes.header}
       style={{
-        height: opened ? '3.75rem' : 'fit-content',
+        height: opened ? 'fit-content' : '3.75rem',
       }}
     >
       <Container size="md" className={classes.inner}>
@@ -62,8 +62,9 @@ export function Header() {
         align="center"
         justify="center"
         style={{
-          visibility: opened ? 'hidden' : 'visible',
+          visibility: opened ? 'visible' : 'hidden',
         }}
+        hiddenFrom="xs"
       >
         <ColorSchemeToggle />
         <Flex mb="sm">
