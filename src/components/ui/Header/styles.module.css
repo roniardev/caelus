@@ -1,5 +1,4 @@
 .header {
-  height: auto;
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
   margin-bottom: rem(120px);
   background-color: light-dark(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6));
@@ -8,8 +7,11 @@
   width: 100%;
   backdrop-filter: blur(10px) brightness(1.2); /* Apply blur effect with increased brightness */
   -webkit-backdrop-filter: blur(10px); /* For Safari */
-  border-bottom: rem(1px) solid
+  border-bottom: rem(1.75px) solid
     light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  box-shadow: 10px 25px 91px 12px rgba(100, 100, 100, 0.39);
+  -webkit-box-shadow: 10px 25px 91px 12px rgba(100, 100, 100, 0.39);
+  -moz-box-shadow: 10px 25px 91px 12px rgba(100, 100, 100, 0.39);
 }
 
 .inner {
