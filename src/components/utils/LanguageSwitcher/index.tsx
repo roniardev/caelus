@@ -18,6 +18,7 @@ export default function LocaleSwitcher() {
       data={locales.map((v) => ({
         label: t(v),
         value: v,
+        disabled: v === locale,
       }))}
       withCheckIcon={false}
       defaultValue={locale}
@@ -26,7 +27,9 @@ export default function LocaleSwitcher() {
         startTransition(() => {
           const resData =
             pathname.substring(0, 1) + nextLocale + pathname.substring(2 + 1);
-          router.replace(resData);
+          if (nextLocale) {
+            router.replace(resData);
+          }
         });
       }}
     />
