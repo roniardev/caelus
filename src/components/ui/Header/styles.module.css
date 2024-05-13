@@ -50,6 +50,7 @@
     );
     color: light-dark(var(--mantine-color-dark-6), var(--mantine-color-dark-0));
     box-shadow: var(--mantine-shadow-lg);
+    cursor: pointer;
   }
 
   [data-mantine-color-scheme] &[data-active] {
