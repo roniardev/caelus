@@ -1,14 +1,14 @@
 .header {
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
   margin-bottom: rem(120px);
-  background-color: light-dark(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6));
+  background-color: light-dark(rgba(255, 255, 255, 0.55), rgba(0, 0, 0, 0.6));
   position: fixed;
   top: 0;
   width: 100%;
-  backdrop-filter: blur(10px) brightness(1.2); /* Apply blur effect with increased brightness */
+  backdrop-filter: blur(10px) brightness(1); /* Apply blur effect with increased brightness */
   -webkit-backdrop-filter: blur(10px); /* For Safari */
   border-bottom: rem(1.75px) solid
-    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    light-dark(var(--mantine-color-dark.4), var(--mantine-color-dark-8));
   box-shadow: 10px 25px 91px 12px rgba(100, 100, 100, 0.31);
   -webkit-box-shadow: 10px 25px 91px 12px rgba(100, 100, 100, 0.31);
   -moz-box-shadow: 10px 25px 91px 12px rgba(100, 100, 100, 0.31);

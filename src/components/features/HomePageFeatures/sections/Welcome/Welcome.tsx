@@ -8,7 +8,7 @@ export function Welcome() {
 
   return (
     <>
-      <Title className={classes.title} ta="center" mt={100}>
+      <Title className={classes.title} ta="center">
         {t('title')}
         <Text
           inherit

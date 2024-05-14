@@ -12,7 +12,14 @@ export default function PageLayout({ children }: Props) {
   return (
     <Flex w="100vw" mih="100vh" direction="column" justify="space-between">
       <Header />
-      {children}
+      <Flex
+        my={100}
+        style={{
+          width: '100%',
+        }}
+      >
+        {children}
+      </Flex>
       <Footer />
     </Flex>
   );
