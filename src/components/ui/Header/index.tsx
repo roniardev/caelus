@@ -2,13 +2,14 @@
 
 import { Burger, Container, Flex, Group, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import Link from 'next/link';
 
 import classes from './styles.module.css';
 
 import { ColorSchemeToggle } from '@/components/utils/ColorSchemeToggle';
 import LocaleSwitcher from '@/components/utils/LanguageSwitcher';
+
+import { usePathname } from '@/navigation';
 
 const links = [
   { link: '/bento', label: 'Bento' },
@@ -17,23 +18,18 @@ const links = [
 
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState('');
-  const router = useRouter();
+  const pathName = usePathname();
 
   const items = links.map((link) => (
-    <button
-      type="button"
+    <Link
+      href={link.link}
+      prefetch
       key={link.label}
       className={classes.link}
-      data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-        router.push(link.link);
-      }}
+      data-active={link.link.includes(pathName.split('/')[-1]) || undefined}
     >
       {link.label}
-    </button>
+    </Link>
   ));
 
   return (
