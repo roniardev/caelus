@@ -38,7 +38,7 @@ export function Header() {
       className={classes.header}
       style={{
         height: opened ? 'fit-content' : '3.75rem',
-        zIndex: 999,
+        zIndex: 100,
       }}
     >
       <Container size="md" className={classes.inner}>
