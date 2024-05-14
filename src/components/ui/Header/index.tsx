@@ -53,7 +53,13 @@ export function Header() {
           <LocaleSwitcher />
         </Group>
 
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          hiddenFrom="xs"
+          size="sm"
+          aria-label="Show list menu"
+        />
       </Container>
 
       <Flex

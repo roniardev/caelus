@@ -47,6 +47,7 @@ export function Footer() {
         className={classes.link}
         component="a"
         href={link.link}
+        c="dark.7"
         onClick={(event) => event.preventDefault()}
       >
         {link.label}
@@ -68,14 +69,14 @@ export function Footer() {
           <Text size="lg" fw={900}>
             Caelus
           </Text>
-          <Text size="xs" c="dimmed" className={classes.description}>
+          <Text size="xs" className={classes.description}>
             Build fully functional accessible web applications faster than ever
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
-        <Text c="dimmed" size="sm">
+        <Text size="sm" fw={600}>
           © {new Date().getFullYear()} roniar.dev. All rights reserved.
         </Text>
 

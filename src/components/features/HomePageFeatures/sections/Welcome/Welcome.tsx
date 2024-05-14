@@ -19,7 +19,15 @@ export function Welcome() {
           Caelus
         </Text>
       </Title>
-      <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
+      <Text
+        c="dark.6"
+        ta="center"
+        size="lg"
+        maw={580}
+        mx="auto"
+        mt="xl"
+        fw={600}
+      >
         {t('subtitle')}
       </Text>
     </>
