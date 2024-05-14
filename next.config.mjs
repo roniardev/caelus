@@ -3,6 +3,7 @@ import createMDX from '@next/mdx';
 import nextIntlPlugin from 'next-intl/plugin';
 import { createSecureHeaders } from 'next-secure-headers';
 import remarkGfm from 'remark-gfm';
+import million from 'million/compiler';
 
 const hostnames = ['localhost:3000', 'roniar.dev'];
 
@@ -67,4 +68,4 @@ const withNextIntl = nextIntlPlugin('./src/i18n/server.ts');
 /**
  * Send the config to server while build or lint.
  */
-export default withNextIntl(withMDX(nextConfig));
+export default million.next(withNextIntl(withMDX(nextConfig)));
