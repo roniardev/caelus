@@ -68,4 +68,4 @@ const withNextIntl = nextIntlPlugin('./src/i18n/server.ts');
 /**
  * Send the config to server while build or lint.
  */
-export default million.next(withNextIntl(withMDX(nextConfig)));
+export default withNextIntl(withMDX(million.next(nextConfig)));
