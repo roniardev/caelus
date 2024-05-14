@@ -85,19 +85,34 @@ export function Footer() {
           justify="flex-end"
           wrap="nowrap"
         >
-          <ActionIcon size="lg" color="gray" variant="subtle">
+          <ActionIcon
+            size="lg"
+            color="gray"
+            variant="subtle"
+            aria-label="Our twitter link"
+          >
             <IconBrandTwitter
               style={{ width: rem(18), height: rem(18) }}
               stroke={1.5}
             />
           </ActionIcon>
-          <ActionIcon size="lg" color="gray" variant="subtle">
+          <ActionIcon
+            size="lg"
+            color="gray"
+            variant="subtle"
+            aria-label="Our youtube link"
+          >
             <IconBrandYoutube
               style={{ width: rem(18), height: rem(18) }}
               stroke={1.5}
             />
           </ActionIcon>
-          <ActionIcon size="lg" color="gray" variant="subtle">
+          <ActionIcon
+            size="lg"
+            color="gray"
+            variant="subtle"
+            aria-label="Our instagram link"
+          >
             <IconBrandInstagram
               style={{ width: rem(18), height: rem(18) }}
               stroke={1.5}

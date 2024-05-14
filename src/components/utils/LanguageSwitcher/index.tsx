@@ -20,6 +20,7 @@ export default function LocaleSwitcher() {
         value: v,
         disabled: v === locale,
       }))}
+      aria-label="Change Language"
       withCheckIcon={false}
       defaultValue={locale}
       onChange={(v) => {

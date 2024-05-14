@@ -35,14 +35,14 @@ export default async function LocaleLayout({
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
           name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </head>
       <body className={GeistSans.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ReactQueryProviders>
             <MantineProvider theme={theme}>
-              <NavigationProgress />
+              <NavigationProgress aria-label="Progress Load Bar" />
               {children}
             </MantineProvider>
           </ReactQueryProviders>
