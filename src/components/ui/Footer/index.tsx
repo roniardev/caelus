@@ -47,7 +47,6 @@ export function Footer() {
         className={classes.link}
         component="a"
         href={link.link}
-        c="dark.7"
         onClick={(event) => event.preventDefault()}
       >
         {link.label}
