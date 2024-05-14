@@ -10,11 +10,14 @@ import classes from './styles.module.css';
 import { ColorSchemeToggle } from '@/components/utils/ColorSchemeToggle';
 import LocaleSwitcher from '@/components/utils/LanguageSwitcher';
 
-const links = [{ link: '/bento', label: 'Bento' }];
+const links = [
+  { link: '/bento', label: 'Bento' },
+  { link: '/docs', label: 'Docs' },
+];
 
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const [active, setActive] = useState('');
   const router = useRouter();
 
   const items = links.map((link) => (

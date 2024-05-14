@@ -38,7 +38,7 @@
   text-decoration: none;
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
   font-size: var(--mantine-font-size-sm);
-  font-weight: 500;
+  font-weight: 700;
 
   @media (max-width: $mantine-breakpoint-xs) {
     width: 90%;

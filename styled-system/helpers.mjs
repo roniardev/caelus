@@ -1,15 +1,17 @@
 // src/assert.ts
 function isObject(value) {
-  return typeof value === "object" && value != null && !Array.isArray(value);
+  return typeof value === 'object' && value != null && !Array.isArray(value);
 }
 
 // src/compact.ts
 function compact(value) {
-  return Object.fromEntries(Object.entries(value ?? {}).filter(([_, value2]) => value2 !== void 0));
+  return Object.fromEntries(
+    Object.entries(value ?? {}).filter(([_, value2]) => value2 !== void 0),
+  );
 }
 
 // src/condition.ts
-var isBaseCondition = (v) => v === "base";
+var isBaseCondition = (v) => v === 'base';
 function filterBaseConditions(c) {
   return c.slice().filter((v) => !isBaseCondition(v));
 }
@@ -17,13 +19,15 @@ function filterBaseConditions(c) {
 // src/css-important.ts
 var importantRegex = /!(important)?$/;
 function isImportant(value) {
-  return typeof value === "string" ? importantRegex.test(value) : false;
+  return typeof value === 'string' ? importantRegex.test(value) : false;
 }
 function withoutImportant(value) {
-  return typeof value === "string" ? value.replace(importantRegex, "").trim() : value;
+  return typeof value === 'string'
+    ? value.replace(importantRegex, '').trim()
+    : value;
 }
 function withoutSpace(str) {
-  return typeof str === "string" ? str.replaceAll(" ", "_") : str;
+  return typeof str === 'string' ? str.replaceAll(' ', '_') : str;
 }
 
 // src/hash.ts
@@ -31,16 +35,15 @@ function toChar(code) {
   return String.fromCharCode(code + (code > 25 ? 39 : 97));
 }
 function toName(code) {
-  let name = "";
+  let name = '';
   let x;
-  for (x = Math.abs(code); x > 52; x = x / 52 | 0)
+  for (x = Math.abs(code); x > 52; x = (x / 52) | 0)
     name = toChar(x % 52) + name;
   return toChar(x % 52) + name;
 }
 function toPhash(h, x) {
   let i = x.length;
-  while (i)
-    h = h * 33 ^ x.charCodeAt(--i);
+  while (i) h = (h * 33) ^ x.charCodeAt(--i);
   return h;
 }
 function toHash(value) {
@@ -87,8 +90,7 @@ function walkObject(target, predicate, options = {}) {
   return inner(target);
 }
 function mapObject(obj, fn) {
-  if (!isObject(obj))
-    return fn(obj);
+  if (!isObject(obj)) return fn(obj);
   return walkObject(obj, (value) => fn(value));
 }
 
@@ -107,7 +109,7 @@ function normalizeShorthand(styles, context) {
   return walkObject(styles, (v) => v, {
     getKey: (prop) => {
       return hasShorthand ? resolveShorthand(prop) : prop;
-    }
+    },
   });
 }
 function normalizeStyleObject(styles, context) {
@@ -116,14 +118,16 @@ function normalizeStyleObject(styles, context) {
   return walkObject(
     styles,
     (value) => {
-      return Array.isArray(value) ? toResponsiveObject(value, conditions.breakpoints.keys) : value;
+      return Array.isArray(value)
+        ? toResponsiveObject(value, conditions.breakpoints.keys)
+        : value;
     },
     {
       stop: (value) => Array.isArray(value),
       getKey: (prop) => {
         return hasShorthand ? resolveShorthand(prop) : prop;
-      }
-    }
+      },
+    },
   );
 }
 
@@ -131,20 +135,25 @@ function normalizeStyleObject(styles, context) {
 var fallbackCondition = {
   shift: (v) => v,
   finalize: (v) => v,
-  breakpoints: { keys: [] }
+  breakpoints: { keys: [] },
 };
-var sanitize = (value) => typeof value === "string" ? value.replaceAll(/[\n\s]+/g, " ") : value;
+var sanitize = (value) =>
+  typeof value === 'string' ? value.replaceAll(/[\n\s]+/g, ' ') : value;
 function createCss(context) {
   const { utility, hash, conditions: conds = fallbackCondition } = context;
-  const formatClassName = (str) => [utility.prefix, str].filter(Boolean).join("-");
+  const formatClassName = (str) =>
+    [utility.prefix, str].filter(Boolean).join('-');
   const hashFn = (conditions, className) => {
     let result;
     if (hash) {
       const baseArray = [...conds.finalize(conditions), className];
-      result = formatClassName(toHash(baseArray.join(":")));
+      result = formatClassName(toHash(baseArray.join(':')));
     } else {
-      const baseArray = [...conds.finalize(conditions), formatClassName(className)];
-      result = baseArray.join(":");
+      const baseArray = [
+        ...conds.finalize(conditions),
+        formatClassName(className),
+      ];
+      result = baseArray.join(':');
     }
     return result;
   };
@@ -153,27 +162,29 @@ function createCss(context) {
     const classNames = /* @__PURE__ */ new Set();
     walkObject(normalizedObject, (value, paths) => {
       const important = isImportant(value);
-      if (value == null)
-        return;
+      if (value == null) return;
       const [prop, ...allConditions] = conds.shift(paths);
       const conditions = filterBaseConditions(allConditions);
-      const transformed = utility.transform(prop, withoutImportant(sanitize(value)));
+      const transformed = utility.transform(
+        prop,
+        withoutImportant(sanitize(value)),
+      );
       let className = hashFn(conditions, transformed.className);
-      if (important)
-        className = `${className}!`;
+      if (important) className = `${className}!`;
       classNames.add(className);
     });
-    return Array.from(classNames).join(" ");
+    return Array.from(classNames).join(' ');
   };
 }
 function compactStyles(...styles) {
-  return styles.filter((style) => isObject(style) && Object.keys(compact(style)).length > 0);
+  return styles.filter(
+    (style) => isObject(style) && Object.keys(compact(style)).length > 0,
+  );
 }
 function createMergeCss(context) {
   function resolve(styles) {
     const allStyles = compactStyles(...styles);
-    if (allStyles.length === 1)
-      return allStyles;
+    if (allStyles.length === 1) return allStyles;
     return allStyles.map((style) => normalizeShorthand(style, context));
   }
   function mergeCss(...styles) {
@@ -204,23 +215,29 @@ var memo = (fn) => {
 var wordRegex = /([A-Z])/g;
 var msRegex = /^ms-/;
 var hypenateProperty = memo((property) => {
-  if (property.startsWith("--"))
-    return property;
-  return property.replace(wordRegex, "-$1").replace(msRegex, "-ms-").toLowerCase();
+  if (property.startsWith('--')) return property;
+  return property
+    .replace(wordRegex, '-$1')
+    .replace(msRegex, '-ms-')
+    .toLowerCase();
 });
 
 // src/slot.ts
 var getSlotRecipes = (recipe = {}) => {
   const init = (slot) => ({
-    className: [recipe.className, slot].filter(Boolean).join("__"),
+    className: [recipe.className, slot].filter(Boolean).join('__'),
     base: recipe.base?.[slot] ?? {},
     variants: {},
     defaultVariants: recipe.defaultVariants ?? {},
-    compoundVariants: recipe.compoundVariants ? getSlotCompoundVariant(recipe.compoundVariants, slot) : []
+    compoundVariants: recipe.compoundVariants
+      ? getSlotCompoundVariant(recipe.compoundVariants, slot)
+      : [],
   });
   const slots = recipe.slots ?? [];
   const recipeParts = slots.map((slot) => [slot, init(slot)]);
-  for (const [variantsKey, variantsSpec] of Object.entries(recipe.variants ?? {})) {
+  for (const [variantsKey, variantsSpec] of Object.entries(
+    recipe.variants ?? {},
+  )) {
     for (const [variantKey, variantSpec] of Object.entries(variantsSpec)) {
       recipeParts.forEach(([slot, slotRecipe]) => {
         slotRecipe.variants[variantsKey] ??= {};
@@ -230,7 +247,13 @@ var getSlotRecipes = (recipe = {}) => {
   }
   return Object.fromEntries(recipeParts);
 };
-var getSlotCompoundVariant = (compoundVariants, slotName) => compoundVariants.filter((compoundVariant) => compoundVariant.css[slotName]).map((compoundVariant) => ({ ...compoundVariant, css: compoundVariant.css[slotName] }));
+var getSlotCompoundVariant = (compoundVariants, slotName) =>
+  compoundVariants
+    .filter((compoundVariant) => compoundVariant.css[slotName])
+    .map((compoundVariant) => ({
+      ...compoundVariant,
+      css: compoundVariant.css[slotName],
+    }));
 
 // src/split-props.ts
 function splitProps(props, ...keys) {
@@ -266,17 +289,15 @@ export {
   splitProps,
   toHash,
   walkObject,
-  withoutSpace
+  withoutSpace,
 };
 
-
-
-
-
 export function __spreadValues(a, b) {
-  return { ...a, ...b }
+  return { ...a, ...b };
 }
 
 export function __objRest(source, exclude) {
-  return Object.fromEntries(Object.entries(source).filter(([key]) => !exclude.includes(key)))
+  return Object.fromEntries(
+    Object.entries(source).filter(([key]) => !exclude.includes(key)),
+  );
 }
