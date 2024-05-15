@@ -26,7 +26,7 @@ export function Header() {
       prefetch
       key={link.label}
       className={classes.link}
-      data-active={link.link.includes(pathName.split('/')[-1]) || undefined}
+      data-active={pathName === link.link || undefined}
     >
       {link.label}
     </Link>
