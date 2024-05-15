@@ -11,10 +11,7 @@ import LocaleSwitcher from '@/components/utils/LanguageSwitcher';
 
 import { usePathname } from '@/navigation';
 
-const links = [
-  { link: '/bento', label: 'Bento' },
-  { link: '/docs', label: 'Docs' },
-];
+const links = [{ link: '/bento', label: 'Bento' }];
 
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);

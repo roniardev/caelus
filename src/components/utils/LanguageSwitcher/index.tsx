@@ -1,4 +1,4 @@
-import { Button, Menu, rem } from '@mantine/core';
+import { Button, Menu, rem, Text } from '@mantine/core';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
@@ -12,20 +12,23 @@ export default function LocaleSwitcher() {
   return (
     <Menu>
       <Menu.Target>
-        <Button size="xs" variant="outline" w={rem(150)}>
+        <Button size="xs" variant="default" color="orange" w={rem(150)}>
           {t(locale)}
         </Button>
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Label>Ganti Bahasa</Menu.Label>
         {locales.map((v) => (
-          <Link
-            href={pathname.substring(0, 1) + v + pathname.substring(2 + 1)}
-            key={v}
-            prefetch
-          >
-            <Menu.Item>{t(v)}</Menu.Item>
-          </Link>
+          <Menu.Item disabled={v === locale}>
+            <Link
+              href={pathname.substring(0, 1) + v + pathname.substring(2 + 1)}
+              key={v}
+              prefetch
+              aria-disabled={v === locale}
+            >
+              <Text size="xs">{t(v)}</Text>
+            </Link>
+          </Menu.Item>
         ))}
       </Menu.Dropdown>
     </Menu>
