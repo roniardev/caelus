@@ -17,7 +17,7 @@ export default function LocaleSwitcher() {
         </Button>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Label>Ganti Bahasa</Menu.Label>
+        <Menu.Label>{t('selectTitle')}</Menu.Label>
         {locales.map((v) => (
           <Menu.Item disabled={v === locale}>
             <Link

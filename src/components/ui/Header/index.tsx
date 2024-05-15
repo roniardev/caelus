@@ -3,6 +3,7 @@
 import { Burger, Container, Flex, Group, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 import classes from './styles.module.css';
 
@@ -16,10 +17,11 @@ const links = [{ link: '/bento', label: 'Bento' }];
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
   const pathName = usePathname();
+  const locale = useLocale();
 
   const items = links.map((link) => (
     <Link
-      href={link.link}
+      href={`${locale}/${link.link}`}
       prefetch
       key={link.label}
       className={classes.link}
@@ -38,9 +40,11 @@ export function Header() {
       }}
     >
       <Container size="md" className={classes.inner}>
-        <Text fw={900} size="lg">
-          Caelus
-        </Text>
+        <Link href={`/${locale}`}>
+          <Text fw={900} size="lg">
+            Caelus
+          </Text>
+        </Link>
         <Group gap={5} visibleFrom="xs">
           {items}
         </Group>
