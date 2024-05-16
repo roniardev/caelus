@@ -17,10 +17,13 @@ export default function PageLayout({ children }: Props) {
         style={{
           width: '100%',
         }}
+        mih="70vh"
       >
         {children}
       </Flex>
-      <Footer />
+      <Flex mah="60vw" w="100vw">
+        <Footer />
+      </Flex>
     </Flex>
   );
 }

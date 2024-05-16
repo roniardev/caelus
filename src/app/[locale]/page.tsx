@@ -4,7 +4,7 @@ import PageLayout from '@/components/layouts/PageLayout';
 export default function HomePage() {
   return (
     <PageLayout>
-      <HomePageFeatures />;
+      <HomePageFeatures />
     </PageLayout>
   );
 }
