@@ -4,6 +4,7 @@ import { Burger, Container, Flex, Group, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import { useMemo } from 'react';
 
 import classes from './styles.module.css';
 
@@ -12,20 +13,23 @@ import LocaleSwitcher from '@/components/utils/LanguageSwitcher';
 
 import { usePathname } from '@/navigation';
 
-const links = [{ link: '/bento', label: 'Bento' }];
-
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
   const pathName = usePathname();
   const locale = useLocale();
 
+  const links = useMemo(
+    () => [{ link: `/${locale}/bento`, label: 'Bento' }],
+    [locale],
+  );
+
   const items = links.map((link) => (
     <Link
-      href={`${locale}/${link.link}`}
+      href={link.link}
       prefetch
       key={link.label}
       className={classes.link}
-      data-active={pathName === link.link || undefined}
+      data-active={`/${locale}${pathName}` === link.link || undefined}
     >
       {link.label}
     </Link>
