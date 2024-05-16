@@ -6,40 +6,48 @@ import {
   IconBrandTwitter,
   IconBrandYoutube,
 } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
 
 import classes from './styles.module.css';
 
-const data = [
-  {
-    title: 'About',
-    links: [
-      { label: 'Features', link: '#' },
-      { label: 'Pricing', link: '#' },
-      { label: 'Support', link: '#' },
-      { label: 'Forums', link: '#' },
-    ],
-  },
-  {
-    title: 'Project',
-    links: [
-      { label: 'Contribute', link: '#' },
-      { label: 'Media assets', link: '#' },
-      { label: 'Changelog', link: '#' },
-      { label: 'Releases', link: '#' },
-    ],
-  },
-  {
-    title: 'Community',
-    links: [
-      { label: 'Join Discord', link: '#' },
-      { label: 'Follow on Twitter', link: '#' },
-      { label: 'Email newsletter', link: '#' },
-      { label: 'GitHub discussions', link: '#' },
-    ],
-  },
-];
-
 export function Footer() {
+  const t = useTranslations('Footer');
+
+  const data = useMemo(
+    () => [
+      {
+        title: t('About.head'),
+        links: [
+          { label: t('About.features'), link: '#' },
+          { label: t('About.pricing'), link: '#' },
+          { label: t('About.support'), link: '#' },
+          { label: t('About.forums'), link: '#' },
+        ],
+      },
+      {
+        title: t('Project.head'),
+        links: [
+          { label: t('Project.contribute'), link: '#' },
+          { label: t('Project.mediaAssets'), link: '#' },
+          { label: t('Project.changelog'), link: '#' },
+          { label: t('Project.releases'), link: '#' },
+        ],
+      },
+      {
+        title: t('Community.head'),
+        links: [
+          { label: t('Community.joinDiscord'), link: '#' },
+          { label: t('Community.followTwitter'), link: '#' },
+          { label: t('Community.emailNewsletter'), link: '#' },
+          { label: t('Community.githubDiscussion'), link: '#' },
+        ],
+      },
+    ],
+
+    [t],
+  );
+
   const groups = data.map((group) => {
     const links = group.links.map((link, index) => (
       <Text<'a'>
@@ -70,14 +78,14 @@ export function Footer() {
             Caelus
           </Text>
           <Text size="xs" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+            {t('subTitle')}
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
         <Text size="sm" fw={600}>
-          © {new Date().getFullYear()} roniar.dev. All rights reserved.
+          © {new Date().getFullYear()} roniar.dev, {t('copyRight')}
         </Text>
 
         <Group

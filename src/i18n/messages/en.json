@@ -10,5 +10,30 @@
     "selectTitle": "Change Language",
     "id": "🇮🇩 Bahasa Indonesia",
     "en": "🇺🇸 English"
+  },
+  "Footer": {
+    "subTitle": "Build fully functional accessible web applications faster than ever",
+    "copyRight": "All rights reserved.",
+    "About": {
+      "head": "About",
+      "features": "Features",
+      "pricing": "Pricing",
+      "support": "Support",
+      "forums": "Forums"
+    },
+    "Project": {
+      "head": "Project",
+      "contribute": "Contribute",
+      "mediaAssets": "Media assets",
+      "changelog": "Changelog",
+      "releases": "Releases"
+    },
+    "Community": {
+      "head": "Community",
+      "joinDiscord": "Join Discord",
+      "followTwitter": "Follow on  Twitter",
+      "emailNewsletter": "Email newsletter",
+      "githubDiscussion": "GitHub discussions"
+    }
   }
 }

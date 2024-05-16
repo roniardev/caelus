@@ -10,5 +10,30 @@
     "selectTitle": "Ganti Bahasa",
     "id": "🇮🇩 Bahasa Indonesia",
     "en": "🇺🇸 English"
+  },
+  "Footer": {
+    "subTitle": "Tingkatkan kecepatan pengembangan aplikasi web yang fungsional dan aksesibel sepenuhnya.",
+    "copyRight": "Hak cipta dilindungi.",
+    "About": {
+      "head": "Tentang",
+      "features": "Fitur",
+      "pricing": "Pembayaran",
+      "support": "Dukungan",
+      "forums": "Forum"
+    },
+    "Project": {
+      "head": "Proyek",
+      "contribute": "Kontribusi",
+      "mediaAssets": "Aset media",
+      "changelog": "Catatan perubahan",
+      "releases": "Rilisan"
+    },
+    "Community": {
+      "head": "Komunitas",
+      "joinDiscord": "Gabung Discrod",
+      "followTwitter": "Follow Twitter",
+      "emailNewsletter": "Email Buletin",
+      "githubDiscussion": "Diskusi GitHub"
+    }
   }
 }

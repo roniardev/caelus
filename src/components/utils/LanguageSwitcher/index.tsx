@@ -25,6 +25,7 @@ export default function LocaleSwitcher() {
               key={v}
               prefetch
               aria-disabled={v === locale}
+              scroll={false}
             >
               <Text size="xs">{t(v)}</Text>
             </Link>
