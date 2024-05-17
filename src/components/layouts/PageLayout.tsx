@@ -21,7 +21,13 @@ export default function PageLayout({ children }: Props) {
       >
         {children}
       </Flex>
-      <Flex mah="60vw" w="100vw">
+      <Flex
+        mah="60vw"
+        w="100vw"
+        style={{
+          width: 'auto',
+        }}
+      >
         <Footer />
       </Flex>
     </Flex>

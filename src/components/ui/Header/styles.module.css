@@ -1,7 +1,6 @@
 .header {
   overflow: hidden;
   padding: 0 var(20px);
-  background-color: rgba(0, 0, 0, 0);
   background-image: radial-gradient(
     rgba(0, 0, 0, 0) 1px,
     light-dark(var(--mantine-color-white), var(--mantine-color-dark-9)) 1px
@@ -16,18 +15,9 @@
   -webkit-backdrop-filter: brightness(100%) blur(3px); /* For Safari */
   border-bottom: rem(0.25px) solid
     light-dark(var(--mantine-color-dark-0), var(--mantine-color-dark-6));
-  box-shadow:
-    4px 1.6px 3.1px -25px rgba(0, 0, 0, 0.028),
-    13.4px 5.4px 10.3px -25px rgba(0, 0, 0, 0.042),
-    60px 24px 46px -25px rgba(0, 0, 0, 0.07);
-  -webkit-box-shadow:
-    4px 1.6px 3.1px -25px rgba(0, 0, 0, 0.028),
-    13.4px 5.4px 10.3px -25px rgba(0, 0, 0, 0.042),
-    60px 24px 46px -25px rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:
-    4px 1.6px 3.1px -25px rgba(0, 0, 0, 0.028),
-    13.4px 5.4px 10.3px -25px rgba(0, 0, 0, 0.042),
-    60px 24px 46px -25px rgba(0, 0, 0, 0.07);
+  box-shadow: -2px 13px 44px 12px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: -2px 13px 44px 12px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: -2px 13px 44px 12px rgba(0, 0, 0, 0.1);
 }
 
 .header {
