@@ -15,9 +15,7 @@
   -webkit-backdrop-filter: brightness(100%) blur(3px); /* For Safari */
   border-bottom: rem(0.25px) solid
     light-dark(var(--mantine-color-dark-0), var(--mantine-color-dark-6));
-  box-shadow: -2px 13px 44px 12px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: -2px 13px 44px 12px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: -2px 13px 44px 12px rgba(0, 0, 0, 0.1);
+  border-top: rem(3px) solid var(--mantine-color-yellow-7);
 }
 
 .header {
@@ -45,7 +43,7 @@
   display: block;
   line-height: 1;
   padding: rem(8px) rem(12px);
-  border-radius: var(--mantine-radius-sm);
+  border-radius: var(--mantine-radius-xs);
   text-decoration: none;
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
   font-size: var(--mantine-font-size-sm);
@@ -75,7 +73,7 @@
   }
 
   [data-mantine-color-scheme] &[data-active] {
-    background-color: var(--mantine-color-blue-filled);
+    background-color: var(--mantine-color-yellow-7);
     color: var(--mantine-color-white);
   }
 }
