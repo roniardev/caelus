@@ -1,12 +1,19 @@
 .header {
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-  margin-bottom: rem(120px);
-  background-color: light-dark(rgba(255, 255, 255, 0.55), rgba(0, 0, 0, 0.6));
+  overflow: hidden;
+  padding: 0 var(20px);
+  background-color: rgba(0, 0, 0, 0);
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0) 1px,
+    light-dark(var(--mantine-color-white), var(--mantine-color-dark-9)) 1px
+  );
+  background-size: 4px 4px;
+  backdrop-filter: brightness(100%) blur(3px);
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  backdrop-filter: blur(10px) brightness(1); /* Apply blur effect with increased brightness */
-  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  -webkit-backdrop-filter: brightness(100%) blur(3px); /* For Safari */
   border-bottom: rem(0.25px) solid
     light-dark(var(--mantine-color-dark-0), var(--mantine-color-dark-6));
   box-shadow:
@@ -21,6 +28,20 @@
     4px 1.6px 3.1px -25px rgba(0, 0, 0, 0.028),
     13.4px 5.4px 10.3px -25px rgba(0, 0, 0, 0.042),
     60px 24px 46px -25px rgba(0, 0, 0, 0.07);
+}
+
+.header {
+  background-color: light-dark(rgba(255, 255, 255, 0.55), rgba(0, 0, 0, 0.6));
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0) 1px,
+    light-dark(rgba(255, 255, 255, 0.55), rgba(0, 0, 0, 0.6)) ; 1px
+  );
+  background-size: 4px 4px;
+  backdrop-filter: brightness(100%) blur(3px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .inner {
@@ -38,7 +59,8 @@
   text-decoration: none;
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
   font-size: var(--mantine-font-size-sm);
-  font-weight: 500;
+  font-weight: 800;
+  letter-spacing: -0.05em;
 
   @media (max-width: $mantine-breakpoint-xs) {
     width: 90%;

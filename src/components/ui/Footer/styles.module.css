@@ -59,6 +59,8 @@
   font-size: var(--mantine-font-size-sm);
   padding-top: rem(3px);
   padding-bottom: rem(3px);
+  letter-spacing: -0.05em;
+  font-weight: 500;
 
   &:hover {
     text-decoration: underline;
