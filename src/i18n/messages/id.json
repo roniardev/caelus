@@ -34,6 +34,11 @@
       "followTwitter": "Follow Twitter",
       "emailNewsletter": "Email Buletin",
       "githubDiscussion": "Diskusi GitHub"
+    },
+    "SystemInfo": {
+      "title": "Info Sistem",
+      "version": "Versi",
+      "isNormal": "Semua sistem beroperasi"
     }
   }
 }

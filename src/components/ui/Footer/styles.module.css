@@ -2,7 +2,7 @@
   width: 100%;
   bottom: 0;
   padding-top: calc(var(--mantine-spacing-xl) * 2);
-  padding-bottom: calc(var(--mantine-spacing-xl) * 2);
+  padding-bottom: calc(var(--mantine-spacing-xl) * 1);
   background-color: light-dark(
     var(--mantine-color-gray-0),
     var(--mantine-color-dark-6)
@@ -61,7 +61,7 @@
   padding-top: rem(3px);
   padding-bottom: rem(3px);
   letter-spacing: -0.05em;
-  font-weight: 500;
+  font-weight: 400;
 
   &:hover {
     text-decoration: underline;
@@ -90,6 +90,7 @@
 
   @media (max-width: $mantine-breakpoint-sm) {
     flex-direction: column;
+    text-align: center;
   }
 }
 

@@ -1,11 +1,21 @@
 'use client';
 
-import { ActionIcon, Container, Group, rem, Text } from '@mantine/core';
+import {
+  ActionIcon,
+  Badge,
+  Container,
+  Divider,
+  Flex,
+  Group,
+  rem,
+  Text,
+} from '@mantine/core';
 import {
   IconBrandInstagram,
   IconBrandTwitter,
   IconBrandYoutube,
 } from '@tabler/icons-react';
+import { GeistMono } from 'geist/font';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 
@@ -84,10 +94,43 @@ export function Footer() {
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
-        <Text size="sm" fw={600}>
-          © {new Date().getFullYear()} roniar.dev, {t('copyRight')}
-        </Text>
-
+        <Flex direction="column" gap="sm" justify="center">
+          <Text size="xs" fw={400}>
+            © {new Date().getFullYear()} Caelus. {t('copyRight')}
+          </Text>
+          <Divider
+            size="xs"
+            variant="dotted"
+            labelPosition="center"
+            color="cyan"
+            className={GeistMono.className}
+            label={
+              <Badge size="xs" variant="outline" tt="uppercase" fw={700}>
+                {t('SystemInfo.title')}
+              </Badge>
+            }
+          />
+          <Flex
+            direction="row"
+            align="center"
+            gap="xs"
+            className={GeistMono.className}
+          >
+            <Text size={rem(10)} fw={900} tt="uppercase">
+              {t('SystemInfo.version')}
+            </Text>
+            <Badge
+              size="xs"
+              variant="gradient"
+              gradient={{ from: 'yellow', to: 'indigo', deg: 278 }}
+            >
+              DEV-2024.5.20
+            </Badge>
+            <Badge variant="dot" size="xs" color="green.5">
+              {t('SystemInfo.isNormal')}
+            </Badge>
+          </Flex>
+        </Flex>
         <Group
           gap={0}
           className={classes.social}

@@ -28,10 +28,10 @@
     "lint:strict": "eslint --max-warnings=0 src"
   },
   "dependencies": {
-    "@mantine/core": "^7.7.1",
-    "@mantine/hooks": "^7.7.1",
-    "@mantine/nprogress": "^7.7.1",
-    "@mantine/vanilla-extract": "^7.7.1",
+    "@mantine/core": "^7.9.2",
+    "@mantine/hooks": "^7.9.2",
+    "@mantine/nprogress": "^7.9.2",
+    "@mantine/vanilla-extract": "^7.9.2",
     "@next/bundle-analyzer": "^13.5.3",
     "@next/mdx": "^14.0.0",
     "@t3-oss/env-core": "^0.7.0",

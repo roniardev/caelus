@@ -9,18 +9,18 @@ export function BentoCard() {
         style={{
           width: '100%',
         }}
-        gap="xl"
+        gap="md"
       >
-        <Card withBorder shadow="xs" radius="md" w="60%">
-          <Title order={3}> What is Caleus?</Title>
-          <Text mt="sm">
+        <Card withBorder w="60%">
+          <Title order={4}> What is Caleus?</Title>
+          <Text mt="sm" size="xs">
             Caleus adalah opiniated boilerplate berbasis: Next.js 14, Mantine
             v7. Panda CSS, React Query, next-intl. Dilengkapi dengan DX yang
             memudahkan penggunaannya untuk membuat Project dengan cepat
           </Text>
         </Card>
-        <Card withBorder shadow="xs" radius="md" w="40%">
-          <Title order={3}> What is Caleus?</Title>
+        <Card withBorder w="40%">
+          <Title order={4}> What is Caleus?</Title>
         </Card>
       </Flex>
     </Flex>

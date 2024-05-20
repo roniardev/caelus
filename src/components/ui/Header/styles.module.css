@@ -6,7 +6,11 @@
     light-dark(var(--mantine-color-white), var(--mantine-color-dark-9)) 1px
   );
   background-size: 4px 4px;
-  backdrop-filter: brightness(100%) blur(3px);
+  backdrop-filter: brightness(100%) blur(5px);
+  background-color: light-dark(
+    rgba(250, 250, 250, 0.625),
+    rgba(0, 0, 0, 0.625)
+  );
   position: fixed;
   top: 0;
   left: 0;
@@ -16,20 +20,6 @@
   border-bottom: rem(0.25px) solid
     light-dark(var(--mantine-color-dark-0), var(--mantine-color-dark-6));
   border-top: rem(3px) solid var(--mantine-color-yellow-7);
-}
-
-.header {
-  background-color: light-dark(rgba(255, 255, 255, 0.55), rgba(0, 0, 0, 0.6));
-  background-image: radial-gradient(
-    rgba(0, 0, 0, 0) 1px,
-    light-dark(rgba(255, 255, 255, 0.55), rgba(0, 0, 0, 0.6)) ; 1px
-  );
-  background-size: 4px 4px;
-  backdrop-filter: brightness(100%) blur(3px);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
 }
 
 .inner {
@@ -43,7 +33,7 @@
   display: block;
   line-height: 1;
   padding: rem(8px) rem(12px);
-  border-radius: var(--mantine-radius-xs);
+  border-radius: var(--mantine-radius-sm);
   text-decoration: none;
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
   font-size: var(--mantine-font-size-sm);
@@ -73,7 +63,7 @@
   }
 
   [data-mantine-color-scheme] &[data-active] {
-    background-color: var(--mantine-color-yellow-7);
+    background-color: var(--mantine-color-yellow-8);
     color: var(--mantine-color-white);
   }
 }
