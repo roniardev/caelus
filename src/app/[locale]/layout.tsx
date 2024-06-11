@@ -2,7 +2,7 @@ import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { NavigationProgress } from '@mantine/nprogress';
 import { GeistSans } from 'geist/font/sans';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTimeZone } from 'next-intl/server';
 import React from 'react';
 
 import './globals.css';
@@ -28,6 +28,7 @@ export default async function LocaleLayout({
   params: { locale },
 }: Props) {
   const messages = await getMessages(locale);
+  const timeZone = await getTimeZone(locale);
   return (
     <html lang={locale}>
       <head>
@@ -39,7 +40,11 @@ export default async function LocaleLayout({
         />
       </head>
       <body className={GeistSans.className}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider
+          locale={locale}
+          timeZone={timeZone}
+          messages={messages}
+        >
           <ReactQueryProviders>
             <MantineProvider theme={theme}>
               <NavigationProgress aria-label="Progress Load Bar" />
