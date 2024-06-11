@@ -11,6 +11,7 @@
     "dev": "next dev",
     "build": "next build",
     "analyze": "ANALYZE=true next build",
+    "git:commit": "cz",
     "git:push": "git push -u origin HEAD",
     "start": "next start",
     "typecheck": "tsc --noEmit",
@@ -113,6 +114,10 @@
     "ts-jest": "^29.1.0",
     "typescript": "5.2.2"
   },
+  "resolutions": {
+    "wrap-ansi": "7.0.0",
+    "string-width": "4.1.0"
+  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "eslint --max-warnings=0",
@@ -121,5 +126,13 @@
     "src/**/*.{json,css,scss,md}": [
       "prettier -w"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./cz.config.js"
+    }
   }
 }
