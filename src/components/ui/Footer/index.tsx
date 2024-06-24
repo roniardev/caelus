@@ -16,70 +16,10 @@ import {
   IconBrandYoutube,
 } from '@tabler/icons-react';
 import { GeistMono } from 'geist/font';
-import { useTranslations } from 'next-intl';
-import { useMemo } from 'react';
 
 import classes from './styles.module.css';
 
 export function Footer() {
-  const t = useTranslations('Footer');
-
-  const data = useMemo(
-    () => [
-      {
-        title: t('About.head'),
-        links: [
-          { label: t('About.features'), link: '#' },
-          { label: t('About.pricing'), link: '#' },
-          { label: t('About.support'), link: '#' },
-          { label: t('About.forums'), link: '#' },
-        ],
-      },
-      {
-        title: t('Project.head'),
-        links: [
-          { label: t('Project.contribute'), link: '#' },
-          { label: t('Project.mediaAssets'), link: '#' },
-          { label: t('Project.changelog'), link: '#' },
-          { label: t('Project.releases'), link: '#' },
-        ],
-      },
-      {
-        title: t('Community.head'),
-        links: [
-          { label: t('Community.joinDiscord'), link: '#' },
-          { label: t('Community.followTwitter'), link: '#' },
-          { label: t('Community.emailNewsletter'), link: '#' },
-          { label: t('Community.githubDiscussion'), link: '#' },
-        ],
-      },
-    ],
-
-    [t],
-  );
-
-  const groups = data.map((group) => {
-    const links = group.links.map((link, index) => (
-      <Text<'a'>
-        key={index}
-        size="xs"
-        className={classes.link}
-        component="a"
-        href={link.link}
-        onClick={(event) => event.preventDefault()}
-      >
-        {link.label}
-      </Text>
-    ));
-
-    return (
-      <div className={classes.wrapper} key={group.title}>
-        <Text className={classes.title}>{group.title}</Text>
-        {links}
-      </div>
-    );
-  });
-
   return (
     <footer className={classes.footer}>
       <Container className={classes.inner}>
@@ -88,15 +28,14 @@ export function Footer() {
             Caelus
           </Text>
           <Text size="xs" className={classes.description}>
-            {t('subTitle')}
+            Caelus is a open source project
           </Text>
         </div>
-        <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
         <Flex direction="column" gap="sm" justify="center">
           <Text size="xs" fw={400}>
-            © {new Date().getFullYear()} Caelus. {t('copyRight')}
+            © {new Date().getFullYear()} Caelus.
           </Text>
           <Divider
             size="xs"
@@ -106,7 +45,7 @@ export function Footer() {
             className={GeistMono.className}
             label={
               <Badge size="xs" variant="outline" tt="uppercase" fw={700}>
-                {t('SystemInfo.title')}
+                System Info
               </Badge>
             }
           />
@@ -117,7 +56,7 @@ export function Footer() {
             className={GeistMono.className}
           >
             <Text size={rem(10)} fw={900} tt="uppercase">
-              {t('SystemInfo.version')}
+              Version
             </Text>
             <Badge
               size="xs"
@@ -127,7 +66,7 @@ export function Footer() {
               DEV-2024.5.20
             </Badge>
             <Badge variant="dot" size="xs" color="green.5">
-              {t('SystemInfo.isNormal')}
+              Normal
             </Badge>
           </Flex>
         </Flex>

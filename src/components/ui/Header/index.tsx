@@ -3,33 +3,27 @@
 import { Burger, Container, Flex, Group, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 
 import classes from './styles.module.css';
 
 import { ColorSchemeToggle } from '@/components/utils/ColorSchemeToggle';
-import LocaleSwitcher from '@/components/utils/LanguageSwitcher';
-
-import { usePathname } from '@/navigation';
+import Logout from '@/components/utils/Logout';
 
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
-  const pathName = usePathname();
-  const locale = useLocale();
+  const pathName = usePathname().substring(1);
 
-  const links = useMemo(
-    () => [{ link: `/${locale}/bento`, label: 'Bento' }],
-    [locale],
-  );
+  const links = useMemo(() => [], []);
 
-  const items = links.map((link) => (
+  const items = links.map((link: any) => (
     <Link
       href={link.link}
       prefetch
       key={link.label}
       className={classes.link}
-      data-active={`/${locale}${pathName}` === link.link || undefined}
+      data-active={`/${pathName}` === link.link || undefined}
     >
       {link.label}
     </Link>
@@ -44,7 +38,7 @@ export function Header() {
       }}
     >
       <Container size="md" className={classes.inner}>
-        <Link href={`/${locale}`}>
+        <Link href="/">
           <Text fw={900} size="lg">
             Caelus
           </Text>
@@ -54,7 +48,7 @@ export function Header() {
         </Group>
         <Group gap={12} visibleFrom="xs">
           <ColorSchemeToggle />
-          <LocaleSwitcher />
+          <Logout />
         </Group>
 
         <Burger
@@ -76,9 +70,6 @@ export function Header() {
         hiddenFrom="xs"
       >
         <ColorSchemeToggle />
-        <Flex mb="sm">
-          <LocaleSwitcher />
-        </Flex>
         {items}
       </Flex>
     </header>
