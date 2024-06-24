@@ -27,7 +27,7 @@
     "test": "npm run prettier:check && npm run lint && npm run typecheck && npm run jest",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "prepare": "panda codegen && husky install",
+    "prepare": "husky install",
     "lint:fix": "eslint src --fix && pnpm run format",
     "lint:strict": "eslint --max-warnings=0 src"
   },
@@ -85,7 +85,6 @@
     "@biomejs/biome": "1.8.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@next/eslint-plugin-next": "^13.5.3",
-    "@pandacss/dev": "^0.15.4",
     "@storybook/addon-essentials": "^7.4.3",
     "@storybook/addon-styling": "^1.0.8",
     "@storybook/blocks": "^7.4.3",
