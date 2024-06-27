@@ -1,4 +1,4 @@
-import { Button, LoadingOverlay, Modal, Text } from '@mantine/core';
+import { Button, Flex, LoadingOverlay, Modal, Text } from '@mantine/core';
 import { useToggle } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { useState } from 'react';
@@ -33,19 +33,31 @@ export default function Logout() {
   return (
     <>
       <LoadingOverlay visible={loading} />
-      <Button color="red.6" size="compact-md" onClick={() => toggle()}>
+      <Button
+        color="red.6"
+        size="compact-md"
+        radius="md"
+        onClick={() => toggle()}
+      >
         Logout
       </Button>
       <Modal
         opened={open}
-        onClose={() => {}}
-        title="Logout"
+        onClose={toggle}
         centered
         size="sm"
-        withCloseButton
+        radius="md"
+        withCloseButton={false}
+        closeOnClickOutside={false}
+        closeOnEscape={false}
       >
-        <Text>Are you sure you want to logout?</Text>
-        <Button onClick={handleLogout}>Logout</Button>
+        <Flex direction="column" gap="md" p="sm">
+          <Text fw="bold">Are you sure you want to logout?</Text>
+          <Button onClick={() => toggle()}>Cancel</Button>
+          <Button onClick={handleLogout} color="red.6">
+            Logout
+          </Button>
+        </Flex>
       </Modal>
     </>
   );

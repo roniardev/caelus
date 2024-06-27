@@ -63,7 +63,7 @@ export function ListPosts() {
   return (
     <>
       <Flex direction="row" w="100%" justify="end">
-        <ModalCreatePost isDisabled={data?.meta.total === 0} />
+        <ModalCreatePost isDisabled={isLoading} />
       </Flex>
       <DataTable
         records={data?.data || []}
