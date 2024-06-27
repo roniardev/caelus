@@ -8,10 +8,12 @@ import '@mantine/notifications/styles.css';
 import './globals.css';
 import '@mantine/core/styles.css';
 import '@mantine/nprogress/styles.css';
-
-import ReactQueryProviders from '@/components/utils/Providers';
+import '@mantine/core/styles.layer.css';
+import 'mantine-datatable/styles.layer.css';
 
 import { theme } from '@/theme';
+
+import RQProviders from '../components/utils/Providers/index';
 
 export const metadata = {
   title: 'Caelus - Opinionated Next.js Starter',
@@ -34,13 +36,13 @@ export default async function LocaleLayout({ children }: Props) {
         />
       </head>
       <body className={GeistSans.className}>
-        <ReactQueryProviders>
+        <RQProviders>
           <MantineProvider theme={theme}>
-            <Notifications position="top-right" />
+            <Notifications position="top-center" />
             <NavigationProgress aria-label="Progress Load Bar" />
             {children}
           </MantineProvider>
-        </ReactQueryProviders>
+        </RQProviders>
       </body>
     </html>
   );

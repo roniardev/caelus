@@ -1,16 +1,31 @@
 'use client';
 
+// We can not useState or useRef in a server component, which is why we are
+// extracting this part out into it's own file with 'use client' on top
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import ReactQueryRewind from 'react-query-rewind';
 
-import { TRPCReactProvider } from '../../../trpc/react';
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // With SSR, we usually want to set some default staleTime
+      // above 0 to avoid refetching immediately on the client
+      staleTime: 60 * 1000,
+    },
+  },
+});
 
-function ReactQueryProviders({ children }: React.PropsWithChildren) {
+export default function RQProviders({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <TRPCReactProvider>
+    <QueryClientProvider client={queryClient}>
       {children}
       <ReactQueryDevtools initialIsOpen={false} />
-    </TRPCReactProvider>
+      <ReactQueryRewind />
+    </QueryClientProvider>
   );
 }
-
-export default ReactQueryProviders;
