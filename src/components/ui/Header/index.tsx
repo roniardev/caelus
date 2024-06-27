@@ -38,7 +38,7 @@ export function Header() {
       }}
     >
       <Container size="md" className={classes.inner}>
-        <Link href="/">
+        <Link href="/" style={{ textDecoration: 'none' }}>
           <Text fw={900} size="lg">
             Caelus
           </Text>

@@ -14,8 +14,16 @@ const put = (resource: string, model: object) =>
 const patch = (resource: string, model: object) =>
   axios.patch(resource, model).then(handleResponse).catch(handleError);
 
-const remove = (resource: string, id: any) =>
-  axios.delete(resource, id).then(handleResponse).catch(handleError);
+const remove = (resource: string) =>
+  axios
+    .delete(resource, {
+      headers: {
+        'content-type': 'application/json',
+      },
+      data: {},
+    })
+    .then(handleResponse)
+    .catch(handleError);
 
 const exportedObject = {
   get,
