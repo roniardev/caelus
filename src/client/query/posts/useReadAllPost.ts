@@ -13,7 +13,7 @@ type PostsInput = {
 
 async function readAllPost(input: PostsInput) {
   const response = await api.get(
-    `/api/v1/posts?page=${input.page}&size=${input.size}&sort=${input.sort}&orderBy=${input.orderBy}&status=${input.status}`,
+    `http://localhost:5173/api/v1/posts?page=${input.page}&size=${input.size}`,
   );
   return response;
 }

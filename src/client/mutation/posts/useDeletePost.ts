@@ -9,7 +9,9 @@ type DeletePostInput = {
 };
 
 async function deletePost(request: DeletePostInput) {
-  const response = await api.remove(`/api/v1/posts/${request.id}`);
+  const response = await api.remove(
+    `http://localhost:5173/api/v1/posts/${request.id}`,
+  );
   return response;
 }
 
@@ -17,5 +19,6 @@ export const useDeletePost = () =>
   useMutation({
     mutationFn: deletePost,
     mutationKey: ['deletePost'],
+    networkMode: 'offlineFirst',
     onSettled: () => queryClient.invalidateQueries({ queryKey: ['posts'] }),
   });

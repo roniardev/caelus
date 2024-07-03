@@ -34,8 +34,11 @@ const ModalCreatePost: React.FC<Props> = (props) => {
       message: 'Processing...',
       type: 'loading',
     });
+    close();
     try {
-      await mutateAsync(values);
+      await mutateAsync({
+        ...values,
+      });
       showNotification({
         title: 'Create Post',
         message: 'Successfully created post',
@@ -44,6 +47,7 @@ const ModalCreatePost: React.FC<Props> = (props) => {
       form.reset();
       close();
     } catch (error: any) {
+      close();
       showNotification({
         title: 'Create Post',
         message: error.message,

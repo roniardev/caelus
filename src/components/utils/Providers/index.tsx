@@ -2,30 +2,72 @@
 
 // We can not useState or useRef in a server component, which is why we are
 // extracting this part out into it's own file with 'use client' on top
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
+import { onlineManager, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
+import { useEffect } from 'react';
 import ReactQueryRewind from 'react-query-rewind';
+
+import { db } from '@/db';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      // With SSR, we usually want to set some default staleTime
-      // above 0 to avoid refetching immediately on the client
-      staleTime: 60 * 1000,
+      staleTime: Infinity,
+      gcTime: 1_000 * 60 * 60 * 24, // 24 hours
+      retry: 0,
     },
   },
 });
+// 3. Set up the persister.
 
 export default function RQProviders({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const persister = createSyncStoragePersister({
+    storage: typeof window !== 'undefined' ? window.localStorage : undefined,
+  });
+
+  useEffect(() => {
+    if (navigator.onLine) {
+      onlineManager?.setOnline(true);
+    } else {
+      onlineManager?.setOnline(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigator.onLine]);
+
   return (
-    <QueryClientProvider client={queryClient}>
+    <PersistQueryClientProvider
+      client={queryClient}
+      persistOptions={{ persister }}
+      onSuccess={() =>
+        queryClient.resumePausedMutations().then(async () => {
+          const res: any = queryClient.getQueryData([
+            'posts',
+            1,
+            10,
+            'desc',
+            'createdAt',
+            undefined,
+          ]);
+          res
+            .filter((item) => item.isSynced === false)
+            .forEach(async (item) => {
+              await db.posts.delete(item.id);
+            });
+          // console.log('res', res);
+          queryClient.invalidateQueries();
+          // console.log('resumePausedMutations', v);
+        })
+      }
+    >
       {children}
       <ReactQueryDevtools initialIsOpen={false} />
       <ReactQueryRewind />
-    </QueryClientProvider>
+    </PersistQueryClientProvider>
   );
 }

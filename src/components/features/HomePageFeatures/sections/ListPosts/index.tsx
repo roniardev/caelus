@@ -1,15 +1,28 @@
 'use client';
 
 import { Icon } from '@iconify/react';
-import { ActionIcon, Alert, Badge, Button, Flex, Modal } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import {
+  ActionIcon,
+  Alert,
+  Badge,
+  Button,
+  Flex,
+  Modal,
+  Text,
+} from '@mantine/core';
+import { useDisclosure, useNetwork } from '@mantine/hooks';
+import { onlineManager } from '@tanstack/query-core';
+import { useIsMutating } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { DataTable } from 'mantine-datatable';
 import { parseAsInteger, useQueryState } from 'nuqs';
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { queryClient } from '@/components/utils/Providers';
 
 import { useDeletePost } from '@/client/mutation/posts/useDeletePost';
 import { useReadAllPost } from '@/client/query/posts/useReadAllPost';
+import { db } from '@/db';
 import { useShowNotification } from '@/utils/hooks/useShowNotification';
 
 import ModalCreatePost from '../ModalCreatePost';
@@ -23,7 +36,8 @@ export function ListPosts() {
     { open: openDeleteModal, close: closeDeleteModal },
   ] = useDisclosure(false);
   const [idDelete, setIdDelete] = React.useState('');
-
+  const networkStatus = useNetwork();
+  const isMutating = useIsMutating();
   const showNotification = useShowNotification();
   const { mutateAsync, isPending } = useDeletePost();
   const [pageSize, setPageSize] = React.useState(10);
@@ -60,8 +74,102 @@ export function ListPosts() {
     }
   };
 
+  const handleSyncOffline = async () => {
+    const res = await db.posts.toArray();
+    res
+      .filter((item) => item.isSynced === false)
+      .forEach((item) => {
+        const postsCache: any = queryClient.getQueryData([
+          'posts',
+          1,
+          10,
+          'desc',
+          'createdAt',
+          undefined,
+        ]);
+
+        if (!postsCache.data.some((v) => v.id === item.id)) {
+          queryClient.setQueryData(
+            ['posts', 1, 10, 'desc', 'createdAt', undefined],
+            (oldData: any) => {
+              const posts = {
+                data: [
+                  {
+                    ...item,
+                    isSynced: false,
+                  },
+                  ...oldData.data,
+                ],
+                meta: oldData.meta,
+              };
+              return posts;
+            },
+          );
+        }
+      });
+  };
+
+  const handleSyncOnline = async () => {
+    if (isMutating === 0) {
+      const res = await db.posts.toArray();
+      res
+        .filter((item) => item.isSynced === false)
+        .forEach(async () => {
+          // await createPost({
+          //   content: item.content,
+          //   title: item.title,
+          //   excerpt: item.excerpt,
+          //   id: item.id,
+          // });
+          // await db.posts.delete(item.id);
+          // await db.posts.where('id').equals(item.id).delete();
+          // queryClient.setQueryData(
+          //   ['posts', 1, 10, 'desc', 'createdAt', undefined],
+          //   (oldData: any) => {
+          //     const posts = {
+          //       data: [
+          //         {
+          //           ...item,
+          //           isSynced: true,
+          //         },
+          //         ...oldData.data,
+          //       ],
+          //       meta: oldData.meta,
+          //     };
+          //     const uniquePostst = new Set(posts.data.map((val) => val.id));
+          //     return {
+          //       data: Array.from(uniquePostst).map((id) => {
+          //         const v = posts.data.find((e) => e.id === id);
+          //         return v;
+          //       }),
+          //       meta: posts.meta,
+          //     };
+          //     return posts;
+          //   },
+          // );
+        });
+    }
+  };
+
+  useEffect(() => {
+    if (onlineManager?.isOnline()) {
+      handleSyncOnline();
+    } else {
+      handleSyncOffline();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onlineManager?.isOnline]);
+
   return (
     <>
+      <Text>
+        Network:{' '}
+        {networkStatus.online ? (
+          <Badge color="green">Online</Badge>
+        ) : (
+          <Badge color="red">Offline</Badge>
+        )}
+      </Text>
       <Flex direction="row" w="100%" justify="end">
         <ModalCreatePost isDisabled={isLoading} />
       </Flex>
