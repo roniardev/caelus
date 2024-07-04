@@ -20,6 +20,7 @@ import React, { useEffect } from 'react';
 
 import { queryClient } from '@/components/utils/Providers';
 
+import { useCreatePost } from '@/client/mutation/posts/useCreatePost';
 import { useDeletePost } from '@/client/mutation/posts/useDeletePost';
 import { useReadAllPost } from '@/client/query/posts/useReadAllPost';
 import { db } from '@/db';
@@ -39,6 +40,7 @@ export function ListPosts() {
   const networkStatus = useNetwork();
   const isMutating = useIsMutating();
   const showNotification = useShowNotification();
+  const { mutateAsync: createPost } = useCreatePost();
   const { mutateAsync, isPending } = useDeletePost();
   const [pageSize, setPageSize] = React.useState(10);
   const { data, isLoading } = useReadAllPost({
@@ -77,7 +79,7 @@ export function ListPosts() {
   const handleSyncOffline = async () => {
     const res = await db.posts.toArray();
     res
-      .filter((item) => item.isSynced === false)
+      .filter((item) => item.isNotSync === true && item.case === 'CREATE')
       .forEach((item) => {
         const postsCache: any = queryClient.getQueryData([
           'posts',
@@ -88,7 +90,7 @@ export function ListPosts() {
           undefined,
         ]);
 
-        if (!postsCache.data.some((v) => v.id === item.id)) {
+        if (postsCache?.data?.some((v) => v.id !== item.id)) {
           queryClient.setQueryData(
             ['posts', 1, 10, 'desc', 'createdAt', undefined],
             (oldData: any) => {
@@ -96,7 +98,6 @@ export function ListPosts() {
                 data: [
                   {
                     ...item,
-                    isSynced: false,
                   },
                   ...oldData.data,
                 ],
@@ -113,40 +114,16 @@ export function ListPosts() {
     if (isMutating === 0) {
       const res = await db.posts.toArray();
       res
-        .filter((item) => item.isSynced === false)
-        .forEach(async () => {
-          // await createPost({
-          //   content: item.content,
-          //   title: item.title,
-          //   excerpt: item.excerpt,
-          //   id: item.id,
-          // });
-          // await db.posts.delete(item.id);
-          // await db.posts.where('id').equals(item.id).delete();
-          // queryClient.setQueryData(
-          //   ['posts', 1, 10, 'desc', 'createdAt', undefined],
-          //   (oldData: any) => {
-          //     const posts = {
-          //       data: [
-          //         {
-          //           ...item,
-          //           isSynced: true,
-          //         },
-          //         ...oldData.data,
-          //       ],
-          //       meta: oldData.meta,
-          //     };
-          //     const uniquePostst = new Set(posts.data.map((val) => val.id));
-          //     return {
-          //       data: Array.from(uniquePostst).map((id) => {
-          //         const v = posts.data.find((e) => e.id === id);
-          //         return v;
-          //       }),
-          //       meta: posts.meta,
-          //     };
-          //     return posts;
-          //   },
-          // );
+        .filter((item) => item.isNotSync === true && item.case === 'CREATE')
+        .forEach(async (item) => {
+          await db.posts.delete(item.id);
+          await db.posts.where('id').equals(item.id).delete();
+          await createPost({
+            content: item.content,
+            title: item.title,
+            excerpt: item.excerpt,
+            id: item.id,
+          });
         });
     }
   };
@@ -218,7 +195,52 @@ export function ListPosts() {
             },
             width: 300,
           },
-
+          {
+            accessor: 'case',
+            title: 'Data State',
+            render: (value: any) => {
+              const state: any[] = [];
+              if (value?.case === 'CREATE') {
+                state.push(
+                  <Badge size="xs" variant="outline" color="green">
+                    Created
+                  </Badge>,
+                );
+              }
+              if (value?.case === 'UPDATE') {
+                state.push(
+                  <Badge size="xs" variant="outline" color="blue">
+                    Updated
+                  </Badge>,
+                );
+              }
+              if (value?.case === 'DELETE') {
+                state.push(
+                  <Badge size="xs" variant="outline" color="red">
+                    Deleted
+                  </Badge>,
+                );
+              }
+              if (value?.isNotSync === true) {
+                state.push(
+                  <Badge size="xs" color="yellow">
+                    Not Synced
+                  </Badge>,
+                );
+              } else {
+                state.push(
+                  <Badge size="xs" color="green">
+                    Synced
+                  </Badge>,
+                );
+              }
+              return state.map((item, index) => (
+                <Flex direction="row" gap="xs" key={index}>
+                  {item}
+                </Flex>
+              ));
+            },
+          },
           {
             accessor: 'status',
             title: 'Status',

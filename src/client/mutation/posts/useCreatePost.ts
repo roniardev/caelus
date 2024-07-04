@@ -25,7 +25,6 @@ async function createPost(
 export const useCreatePost = () =>
   useMutation({
     mutationFn: createPost,
-    mutationKey: ['createPosts', 'posts'],
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['posts'] });
     },
@@ -34,9 +33,10 @@ export const useCreatePost = () =>
         const tempId = generateId(15);
         await db.posts.add({
           ...newData,
-          isSynced: false,
+          isNotSync: true,
           tempId,
           id: tempId,
+          case: 'CREATE',
         });
 
         queryClient.setQueryData(
@@ -47,7 +47,8 @@ export const useCreatePost = () =>
                 {
                   ...newData,
                   id: tempId,
-                  isSynced: false,
+                  isNotSync: true,
+                  case: 'CREATE',
                 },
                 ...oldData.data,
               ],
@@ -64,9 +65,6 @@ export const useCreatePost = () =>
       queryClient.setQueryData(['posts'], context?.previousData);
     },
     onSuccess: async (data, newData, context: any) => {
-      queryClient.setQueryData(['posts'], (oldData: any) =>
-        oldData.map((item) => (item.id === context.id ? data : item)),
-      );
       await db.posts.delete(context?.id);
       await db.posts.delete(newData?.id || '');
       await db.posts.delete(data?.id || '');

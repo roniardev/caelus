@@ -2075,21 +2075,21 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`);
       precacheEntries: [
         {
           revision: '196a82c05002e9fc94213874cd725349',
-          url: '/_next/static/0a5NRK96wvRFB8dQU2408/_buildManifest.js',
+          url: '/_next/static/QPJolBE9acAUL9uW6mg87/_buildManifest.js',
         },
         {
           revision: 'b6652df95db52feb4daf4eca35380933',
-          url: '/_next/static/0a5NRK96wvRFB8dQU2408/_ssgManifest.js',
+          url: '/_next/static/QPJolBE9acAUL9uW6mg87/_ssgManifest.js',
         },
-        { revision: null, url: '/_next/static/chunks/338-8a4a51f411a1c324.js' },
         { revision: null, url: '/_next/static/chunks/379-d6da1835d9c1756b.js' },
         { revision: null, url: '/_next/static/chunks/438-38c89a07956e15b8.js' },
         { revision: null, url: '/_next/static/chunks/471-747f9bebc98466f5.js' },
         { revision: null, url: '/_next/static/chunks/503-a0c47ca59f049027.js' },
         { revision: null, url: '/_next/static/chunks/546-034e43c538ef7b71.js' },
+        { revision: null, url: '/_next/static/chunks/591-9bd15e6b5dd92861.js' },
         { revision: null, url: '/_next/static/chunks/6-4f1b752c57700e71.js' },
         { revision: null, url: '/_next/static/chunks/601-d58863105454427b.js' },
-        { revision: null, url: '/_next/static/chunks/61-9770d0d2ad191ed8.js' },
+        { revision: null, url: '/_next/static/chunks/61-22bb0aa8953148f8.js' },
         {
           revision: null,
           url: '/_next/static/chunks/6c03606a-8dee8fc4098d1f8d.js',
@@ -2102,7 +2102,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`);
         },
         {
           revision: null,
-          url: '/_next/static/chunks/app/(auth)/login/page-0398e10ad97c4d8f.js',
+          url: '/_next/static/chunks/app/(auth)/login/page-8f9841b224a3c54e.js',
         },
         {
           revision: null,
@@ -2122,7 +2122,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`);
         },
         {
           revision: null,
-          url: '/_next/static/chunks/app/(main)/page-03ab3c32a89f5232.js',
+          url: '/_next/static/chunks/app/(main)/page-2d60c8ce3b0ec433.js',
         },
         {
           revision: null,
@@ -2134,7 +2134,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`);
         },
         {
           revision: null,
-          url: '/_next/static/chunks/app/layout-6a14153c43a12dc3.js',
+          url: '/_next/static/chunks/app/layout-44be37ea7fd8421c.js',
         },
         {
           revision: null,

@@ -7,7 +7,8 @@ interface Posts {
   excerpt: string;
   title: string;
   tempId: string;
-  isSynced: boolean;
+  isNotSync: boolean;
+  case: 'UPDATE' | 'CREATE' | 'DELETE';
 }
 
 const db = new Dexie('PostsDatabase') as Dexie & {
@@ -19,7 +20,7 @@ const db = new Dexie('PostsDatabase') as Dexie & {
 
 // Schema declaration:
 db.version(1).stores({
-  posts: 'id, content, excerpt, isSynced, title', // primary key "id" (for the runtime!)
+  posts: 'id, content, excerpt, isNotSync, title, case', // primary key "id" (for the runtime!)
 });
 
 export type { Posts };

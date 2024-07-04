@@ -15,11 +15,6 @@ import { theme } from '@/theme';
 
 import RQProviders from '../components/utils/Providers/index';
 
-export const metadata = {
-  title: 'Caelus - Opinionated Next.js Starter',
-  description: 'I am using Mantine with Next.js!',
-};
-
 type Props = {
   children: React.ReactNode;
 };

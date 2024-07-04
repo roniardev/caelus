@@ -3,10 +3,9 @@
 // We can not useState or useRef in a server component, which is why we are
 // extracting this part out into it's own file with 'use client' on top
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
-import { onlineManager, QueryClient } from '@tanstack/react-query';
+import { QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
-import { useEffect } from 'react';
 import ReactQueryRewind from 'react-query-rewind';
 
 import { db } from '@/db';
@@ -16,7 +15,6 @@ export const queryClient = new QueryClient({
     queries: {
       staleTime: Infinity,
       gcTime: 1_000 * 60 * 60 * 24, // 24 hours
-      retry: 0,
     },
   },
 });
@@ -31,14 +29,14 @@ export default function RQProviders({
     storage: typeof window !== 'undefined' ? window.localStorage : undefined,
   });
 
-  useEffect(() => {
-    if (navigator.onLine) {
-      onlineManager?.setOnline(true);
-    } else {
-      onlineManager?.setOnline(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigator.onLine]);
+  // useEffect(() => {
+  //   if (navigator?.onLine) {
+  //     onlineManager?.setOnline(true);
+  //   } else {
+  //     onlineManager?.setOnline(false);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [navigator?.onLine]);
 
   return (
     <PersistQueryClientProvider

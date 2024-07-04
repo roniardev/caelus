@@ -1,17 +1,14 @@
-import { redirect } from 'next/navigation';
-
-import { validateRequest } from '@/lib/auth/validate-request';
-import { Paths } from '@/lib/constant';
+'use client';
 
 import HomePageFeatures from '@/components/features/HomePageFeatures';
 import PageLayout from '@/components/layouts/PageLayout';
 
-export default async function HomePage() {
-  const { user } = await validateRequest();
-  if (!user) redirect(Paths.Login);
+import { FcmTokenComp } from '@/services/firebase-foreground';
 
+export default function HomePage() {
   return (
     <PageLayout>
+      <FcmTokenComp />
       <HomePageFeatures />
     </PageLayout>
   );
